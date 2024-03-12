@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://hkjbw6nsxt4k"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_ixa8o"]
+[ext_resource type="PackedScene" uid="uid://clf4brgg3lpkm" path="res://sprites/PlayerPlaceholder1.aseprite" id="1_qko7b"]
+[ext_resource type="Script" path="res://scenes/PlayerBody.gd" id="2_8dqa4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kx6ua"]
+radius = 99.0454
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_ixa8o")
+
+[node name="PlayerBody" type="CharacterBody2D" parent="."]
+collision_layer = 65535
+collision_mask = 15
+safe_margin = 0.01
+script = ExtResource("2_8dqa4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
+light_mask = 31
+visibility_layer = 31
+texture_filter = 1
+shape = SubResource("CircleShape2D_kx6ua")
+
+[node name="PlayerPlaceholder1" parent="PlayerBody" instance=ExtResource("1_qko7b")]
+texture_filter = 1
+scale = Vector2(6, 6)
+animation = &"Shining"
